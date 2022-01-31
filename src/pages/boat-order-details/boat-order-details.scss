@@ -1,0 +1,42 @@
+page-boat-order-details {
+
+  font-family: roboto;
+
+  .formdiv{
+      margin-top:2rem;
+  }
+
+  .subbtn{
+      margin-top: 1rem;
+      text-align: center;
+  }
+
+  .button{
+      width:50%;
+  }
+
+  #container {
+    width: 100%;
+    display: flex;
+  }
+
+  #leftThing {
+    align-self: center;
+    width: 5%;
+    margin-top:1px;
+    // margin-top: 15px;
+    // margin-left: 5px;
+  }
+
+  #rightThing {
+    align-self: center;
+    width: 95%;
+  }
+
+  .ion-md-icon{
+    color: #2ea6a6 !important;
+  }
+  .ion-ios-time{
+    color: #2ea6a6 !important;
+  }
+}

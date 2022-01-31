@@ -1,0 +1,118 @@
+<ion-menu [content]="content">
+  <ion-content class="menubar">
+
+    <div class="menu-header">
+      <img src="././assets/imgs/logo.png" alt="" srcset="" style="width: 50%; height: 137px; margin-bottom: 20px;">
+
+    </div>
+    <ion-list class="mainmenu">
+      <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="onclickHome()" menuToggle>
+          <ion-icon name="md-home"></ion-icon>
+          &nbsp;&nbsp;<p>Home</p>
+        </button>
+      </ion-item>
+
+      <!-- <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="onClickRetailProducts()" menuToggle>
+          <ion-icon ios="ios-pricetag" md="md-pricetag"></ion-icon>
+          &nbsp;&nbsp;<p>Retail Products</p>
+        </button>
+      </ion-item> -->
+
+      <ion-item no-lines class="item item-trns" *ngIf="!isGuestLogin()">
+        <button ion-button clear (click)="onclickMyOrder()" menuToggle>
+          <ion-icon name="ios-cart"></ion-icon>
+          &nbsp;&nbsp;<p>My Orders</p>
+        </button>
+      </ion-item>
+
+      <ion-item no-lines class="item item-trns" *ngIf="!isGuestLogin()  && isSubscribed()">
+        <button ion-button clear (click)="onclickSubscriptions()" menuToggle>
+          <ion-icon ios="ios-refresh" md="md-refresh"></ion-icon>
+          &nbsp;&nbsp;<p>Subscriptions</p>
+        </button>
+      </ion-item>
+
+      <!-- <ion-item no-lines class="item item-trns" *ngIf="!isGuestLogin() && isSubscribed()">
+        <button ion-button clear (click)="onclickSubscriptions()" menuToggle>
+          <ion-icon ios="ios-refresh" md="md-refresh"></ion-icon>
+          &nbsp;&nbsp;<p>Subscriptions</p>
+        </button>
+      </ion-item> -->
+
+      <ion-item no-lines class="item item-trns" *ngIf="!isSubscribed()">
+        <button ion-button clear (click)="onMyBagsClicked()" menuToggle>
+          <ion-icon ios="ios-basket" md="md-basket"></ion-icon>
+          &nbsp;&nbsp;<p>My Bags</p>
+        </button>
+      </ion-item>
+
+      <!-- <ion-item no-lines class="item item-trns" *ngIf="!isGuestLogin()">
+        <button ion-button clear (click)="onclickMyWallet()" menuToggle>
+          <ion-icon ios="ios-cash" md="md-cash"></ion-icon>
+          &nbsp;&nbsp;<p>My Wallet</p>
+        </button>
+      </ion-item> -->
+
+      <!-- <ion-item no-lines class="item item-trns" *ngIf="!isGuestLogin()">
+        <button ion-button clear (click)="onclickQrScanner()" menuToggle>
+          <ion-icon name="expand"></ion-icon>
+          &nbsp;&nbsp;<p>QR Scanner</p>
+        </button>
+      </ion-item> -->
+
+      <!-- <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="openoffers()" menuToggle>
+          <ion-icon name="md-happy"></ion-icon>
+          &nbsp;&nbsp;<p>Offers</p>
+        </button>
+      </ion-item> -->
+
+      <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="onclickNoti()" menuToggle>
+          <ion-icon name="ios-notifications"></ion-icon>
+          &nbsp;&nbsp;<p>Notifications</p>
+        </button>
+      </ion-item>
+
+      <!-- <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="openContact()" menuToggle>
+          <ion-icon name="ios-pin"></ion-icon>
+          &nbsp;&nbsp;<p>Contact Us</p>
+        </button>
+      </ion-item> -->
+
+      <!-- <ion-item no-lines class="item item-trns" *ngIf="!isGuestLogin()">
+        <button ion-button clear (click)="openMessages()" menuToggle>
+          <ion-icon ios="ios-mail-open" md="md-mail-open"></ion-icon>
+          &nbsp;&nbsp;<p>Messages</p>
+        </button>
+      </ion-item> -->
+      <!-- 
+      <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="openfeedback()" menuToggle>
+          <ion-icon name="md-star-half"></ion-icon>
+          &nbsp;&nbsp;<p>Feedback</p>
+        </button>
+      </ion-item> -->
+
+      <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="openAboutUs()" menuToggle>
+          <ion-icon name="people"></ion-icon>
+          &nbsp;&nbsp;<p>About Us</p>
+        </button>
+      </ion-item>
+
+      <ion-item no-lines class="item item-trns">
+        <button ion-button clear (click)="logout()" menuToggle>
+          <ion-icon name="md-log-out"></ion-icon>
+          &nbsp;&nbsp;<p>Logout</p>
+        </button>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

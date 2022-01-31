@@ -1,0 +1,120 @@
+<!--
+  Generated template for the SamplePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="background-color: #2cbfb1;">
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu" style="color:#000; "></ion-icon>
+    </button>
+
+    <ion-title style="color:#fff;" *ngIf="showMessageDetails==true">Message Details</ion-title>
+    <ion-title style="color:#fff;" *ngIf="showMessageDetails==false">Messages</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-content no-padding style="background-image: url(././assets/imgs/bg.png);background-color:white;"
+    class="welcome-background">
+
+    <div *ngIf="showMessageDetails==false">
+
+      <div *ngIf="showtxt">
+        <ion-grid>
+          <ion-row class="emptycart">
+            <ion-col>
+              <p>There are no messages in your inbox!</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <ion-list *ngIf="showHisdata">
+        <ion-card no-padding *ngFor="let item of allOrderData;  let i = index;">
+          <ion-row class="orderholder">
+            <ion-col>
+              <h2 class="orderid">Message ID: {{item.id}}</h2>
+              <!-- <h3 class="ordertime">Placed on <span>{{item.ordertime}}</span></h3> -->
+              <!-- <p *ngIf="item.status == 'Received'"><img src="././assets/imgs/received.png">Received</p>
+              <p *ngIf="item.status == 'Confirmed'"><img src="././assets/imgs/confirm.png">Confirmed</p>
+              <p *ngIf="item.status == 'Preparing'"><img src="././assets/imgs/process.png">Processed</p>
+              <p *ngIf="item.status == 'On Way'"><img src="././assets/imgs/deliver.png">On Way</p>
+              <p *ngIf="item.status == 'Delivered'"><img src="././assets/imgs/delivered.png">Delivered</p>
+              <p *ngIf="item.status == 'Cancelled'"><img src="././assets/imgs/cancel.png">Cancelled</p> -->
+              <p>{{item.cmsg}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear (click)="openMessageDetail(item)">
+                <div>View Reply</div>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-list>
+      <ion-infinite-scroll (ionInfinite)="doInfinite2($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+    </div>
+
+    <div *ngIf="showMessageDetails==true">
+
+      <div>
+        <ion-item no-padding clear style="margin-bottom: 10px; margin-left: 10px;">
+          <ion-row>
+            <ion-col>
+              <div style="font-weight: bold">Message ID</div>
+            </ion-col>
+            <ion-col>
+              <p>{{msgToShow.id}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+        <ion-item style="margin-bottom: 10px;">
+          <ion-label style="font-weight: bold; color: black;" >Message</ion-label>
+          <ion-textarea rows="6" cols="20" placeholder="Customer Message: " disabled value={{msgToShow.cmsg}}></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="font-weight: bold; color:black">Reply</ion-label>
+          <ion-textarea rows="6" cols="20" placeholder="No Reply Yet..." disabled value={{msgToShow.replyMessage}}></ion-textarea>
+        </ion-item>
+
+        <ion-item no-padding clear no-lines>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear (click)="showAllMessages()">
+                <div>Ok</div>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+      </div>
+
+      <!-- <ion-card>
+        <ion-row class="orderholder">
+          <ion-col>
+            <h2 class="orderid">Message ID: {{msgToShow.id}}</h2>
+            <p>{{msgToShow.cmsg}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear (click)="showAllMessages()">
+              <div>Ok</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card> -->
+
+    </div>
+
+  </ion-content>

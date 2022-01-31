@@ -1,0 +1,97 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            THE CLOTHES SPIN
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div style="height: 160px; min-height: 160px;">
+        <ion-slides *ngIf="bannerFullData && bannerFullData.length" pager autoplay="2000" loop="true" dir="ltr">
+            <ion-slide *ngFor="let slide of bannerFullData">
+                <img [src]="baseUrlBanner + slide.bnimg" class="slide-image" />
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <p padding-left padding-right class="heading">Services</p>
+    <ion-scroll scrollX style="height:185px;white-space: nowrap;">
+        <!-- <div class="scroll-item" *ngFor="let cat of servicesFullData" (click)="selectclothes(cat)"> -->
+        <div class="scroll-item" *ngFor="let cat of servicesFullData" (click)="selectclothes(cat)">
+            <div class="item-box">
+                <img *ngIf="cat.service_img != null" [src]="baseUrlImage + cat.service_img">
+                <img *ngIf="cat.service_img == null" src="assets/imgs/logo.png">
+                <h5 [innerHTML]="cat.service"></h5>
+                <p *ngIf="cat.description != null">{{cat.description}}</p>
+            </div>
+        </div>
+    </ion-scroll>
+
+    <div class="row" *ngIf="!isUserSubscribed">
+        <div class="col"></div>
+        <div class="col">
+            <button ion-button round style="height: 50px;" (click)="onclickSubscriptions()">Subscribe</button>
+        </div>
+        <div class="col"></div>
+    </div>
+    <!-- <button ion-button round outline>Outline + Round</button> -->
+
+    <p *ngIf="noOrders && activeOrdersData.length==0" padding-left padding-right class="heading">
+        You Have No Active Orders
+    </p>
+    <p *ngIf="!noOrders  && activeOrdersData.length!=0" padding-left padding-right class="heading">
+        Your Active Orders ({{activeOrdersData.length}})<span (click)="myOrders()">
+            Past Orders
+        </span>
+    </p>
+
+    <div *ngIf="!noOrders && activeOrdersData.length!=0" padding-left padding-right class="order-list">
+        <ion-list no-lines>
+            <ion-item *ngFor="let order of activeOrdersData" (click)="openOrderDetails(order)">
+                <ion-avatar [ngSwitch]="order.status" item-start>
+                    <img src="assets/imgs/confirmed.png" *ngSwitchDefault>
+                    <img src="assets/imgs/pick_active.png" *ngSwitchCase="'Picked Up'">
+                    <img src="assets/imgs/inporcess.png" *ngSwitchCase="'Processing'">
+                    <img src="assets/imgs/dispatched.png" *ngSwitchCase="'Dispatched'">
+                    <img src="assets/imgs/delivered.png" *ngSwitchCase="'Delivered'">
+                </ion-avatar>
+                <h2>Order No: {{order.orderid}}</h2>
+                <p>{{order.status}}</p>
+                <ion-note item-end>
+                    <p [innerHTML]="order.total_html"></p>
+                    <small>{{order.ordertime}}</small>
+                </ion-note>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!-- <div class="placeholder" margin *ngIf="!user && !ordersLoading" (click)="login()">
+      <div class="icon-box">
+          <div class="box">
+              <ion-icon name="md-person-add"></ion-icon>
+          </div>
+      </div>
+      <div class="text-box">
+          <h3>
+              <span>{{"login_to_view_order" | translate}}</span>
+              <span></span>
+          </h3>
+      </div>
+  </div> -->
+    <!-- <div class="placeholder" margin *ngIf="user && !ordersLoading && !orders.length" (click)="order()">
+      <div class="icon-box">
+          <div class="box">
+              <ion-icon name="md-add"></ion-icon>
+          </div>
+      </div>
+      <div class="text-box">
+          <h3>
+              <span>No Orders</span>
+              <span class="link">Order Now</span>
+          </h3>
+      </div>
+  </div> -->
+</ion-content>

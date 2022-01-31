@@ -1,0 +1,71 @@
+<!--
+  Generated template for the SubscriptionDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>SUBSCRIPTION DETAILS</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-light">
+
+  <ion-list>
+    <ion-card no-padding>
+      <ion-row class="orderholder">
+        <ion-col>
+          <h2 class="orderid">{{subscriptionOpened.bag_name}}</h2>
+          <h3 class="ordertime">Price: <span style="font-weight: bold;">BSD$ {{subscriptionOpened.bag_price}}</span>
+          </h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+        <ion-col>
+          <button *ngIf="!noBagDetails" ion-button icon-left clear (click)="subscribe()">
+            <div>Subscribe</div>
+          </button>
+
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <div class="cartitems">
+      <p>Bag Details</p>
+      <ion-grid>
+        <ion-row *ngIf="!noBagDetails">
+          <ion-col style="font-weight:bold">Item</ion-col>
+          <ion-col style="font-weight:bold">Service</ion-col>
+          <ion-col style="font-weight:bold">Qty</ion-col>
+          <!-- <ion-col style="font-weight:bold">Price</ion-col> -->
+        </ion-row>
+
+        <div *ngIf="!noBagDetails">
+          <div>
+            <ion-row *ngFor="let c of bagDetails; let i = index">
+              <ion-col *ngIf="c.categoryname"> {{ c.item_name }} </ion-col>
+              <ion-col *ngIf="!c.categoryname"> {{ c.item_name }} </ion-col>
+              <ion-col> {{ c.service_name }} </ion-col>
+              <ion-col> {{ c.item_quantity }} </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+        <div *ngIf="noBagDetails">
+            <ion-row *ngIf="!bagDetails.length" class="row" style=" justify-content: center; color: grey;">
+              No Bag Details
+            </ion-row>
+        </div>
+
+      </ion-grid>
+    </div>
+  </ion-list>
+
+</ion-content>

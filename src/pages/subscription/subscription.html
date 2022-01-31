@@ -1,0 +1,64 @@
+<!--
+  Generated template for the SubscriptionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>PAYPAL SUBSCRIPTION</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-light">
+  <!-- 
+  <ion-col>
+    <iframe src="assets/iframeTemplates/paypalSubscription.html" name="ebook-player" id="ebook-player"
+      style="width: 100% !important; height: 35% !important;"></iframe>
+  </ion-col>
+
+  <ion-col>
+    <iframe src="assets/iframeTemplates/paypalSubscription1.html" name="ebook-player" id="ebook-player"
+      style="width: 100% !important; height: 35% !important;"></iframe>
+  </ion-col> -->
+
+  <div *ngIf="showtxt">
+    <ion-grid>
+      <ion-row class="emptycart">
+        <ion-col>
+          <p>No subscriptions are available right now! :(</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-list *ngIf="!emptycart">
+    <ion-card no-padding *ngFor="let item of subFullData;  let i = index;">
+      <ion-row class="orderholder">
+        <ion-col>
+          <h2 class="orderid">{{item.bag_name}}</h2>
+          <h3 class="ordertime">Price: <span style="font-weight: bold;">BSD$ {{item.bag_price}}</span></h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+        <ion-col>
+          <button ion-button icon-left clear
+          (click)="openSubscriptionDetails(item)">
+            <div>Details</div>
+          </button>
+          <!-- <button ion-button icon-left clear
+            (click)="openOrderDetailPage(item.orderid,item.fname,item.lname,item.area,item.address,item.mobile,item.ordertime,item.delivery_option,item.delivery_date,item.pickup_date,item.pickup_time_from,item.pickup_time_to,item.delivery_time_from,item.delivery_time_to)">
+            <div>View Details</div>
+          </button> -->
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

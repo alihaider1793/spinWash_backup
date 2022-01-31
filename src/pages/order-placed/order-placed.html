@@ -1,0 +1,172 @@
+<ion-header style="background-color: #2cbfb1;">
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu" style="color:#fff; "></ion-icon>
+    </button>
+    <ion-title style="color:#fff; ">ORDER DETAILS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light" padding>
+
+  <div>
+    <ion-item no-padding clear>
+      <ion-row>
+        <ion-col>
+          <div style="font-weight: bold">Order Detail</div>
+        </ion-col>
+        <ion-col>
+          <p>ORDER ID: {{viewData.orderid}}</p>
+          <p>Placed on </p>
+          <p>{{viewData.ordertime}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <!--          <ion-item no-padding clear>-->
+    <!--              <ion-row >-->
+    <!--                <ion-col >-->
+    <!--                  <div style="font-weight: bold">PAYMENT MODE</div>-->
+    <!--                </ion-col>-->
+    <!--                <ion-col>-->
+    <!--                  <p>COD</p>-->
+    <!--                </ion-col>-->
+    <!--              </ion-row>-->
+    <!--          </ion-item>-->
+
+    <ion-item no-padding clear>
+      <ion-row>
+        <ion-col>
+          <div style="font-weight: bold">ADDRESS</div>
+        </ion-col>
+        <ion-col>
+          <p>{{viewData.area}}</p>
+          <p>{{viewData.address}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-item no-padding clear no-lines>
+      <ion-row>
+        <ion-col>
+          <div style="font-weight: bold">Contact</div>
+        </ion-col>
+        <ion-col>
+          <p>{{viewData.mobile}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-item no-padding clear no-lines *ngIf="!noClothProducts">
+      <ion-row>
+        <ion-col>
+          <div style="font-weight: bold">Pick up Date</div>
+        </ion-col>
+        <ion-col>
+          <p>{{viewData.pickup_date}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="!noClothProducts">
+        <ion-col>
+          <div style="font-weight: bold">Pick up Time</div>
+        </ion-col>
+        <ion-col>
+          <p>{{viewData.pickup_time_from}} - {{viewData.pickup_time_to}}</p>
+        </ion-col>
+      </ion-row>
+
+    </ion-item>
+
+    <ion-item no-padding clear no-lines *ngIf="!noClothProducts">
+      <ion-row>
+        <ion-col>
+          <div style="font-weight: bold">Delivery Date</div>
+        </ion-col>
+        <ion-col>
+          <p>{{viewData.delivery_date}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="!noClothProducts">
+        <ion-col>
+          <div style="font-weight: bold">Delivery Time</div>
+        </ion-col>
+        <ion-col>
+          <p>{{viewData.delivery_time_from}} - {{viewData.delivery_time_to}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-item no-padding clear *ngIf="viewData.delivery_fee != NULL">
+      <ion-row>
+        <ion-col>
+          <div style="font-weight: bold">Delivery Fee</div>
+        </ion-col>
+        <ion-col>
+          <p>BSD$ {{viewData.delivery_fee}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+
+    <div class="cartitems" *ngIf="!noClothProducts">
+      <p>Your Clothes</p>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="font-weight:bold">Item</ion-col>
+          <ion-col style="font-weight:bold">Service</ion-col>
+          <ion-col style="font-weight:bold">Qty</ion-col>
+          <ion-col style="font-weight:bold">Price</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let c of orderDetail; let i = index">
+          <ion-col *ngIf="c.categoryname"> {{ c.itemname }} ({{ c.categoryname }}) </ion-col>
+          <ion-col *ngIf="!c.categoryname"> {{ c.itemname }} </ion-col>
+          <ion-col> {{ c.itemquantity }} {{ c.itemquantitytype }} </ion-col>
+          <ion-col> {{ c.Mquantity }}</ion-col>
+          <ion-col> BSD$ {{ c.itemprice * c.Mquantity }} </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="cartitems" *ngIf="!noRetailProducts">
+      <p>Your Items</p>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="font-weight:bold">Item</ion-col>
+          <ion-col style="font-weight:bold">Description</ion-col>
+          <ion-col style="font-weight:bold">Qty</ion-col>
+          <ion-col style="font-weight:bold">Price</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let c of orderDetailRetail; let i = index">
+          <ion-col> {{ c.itemname }} </ion-col>
+          <ion-col> {{ c.itemquantity }} {{ c.itemquantitytype }} </ion-col>
+          <ion-col> {{ c.Mquantity }}</ion-col>
+          <ion-col> BSD$ {{ c.itemprice * c.Mquantity }} </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- <div *ngIf=flag>
+              <ion-item no-padding clear>
+                <ion-row >
+                  <ion-col></ion-col>
+                  <ion-col >
+                      <p><small>Price is Exclusive Of Delivery Charges, VAT(12%) and Charity Amount</small></p>
+                  </ion-col>
+                </ion-row>
+              </ion-item>
+            </div> -->
+
+    <!-- <div *ngIf=flag1>
+          <ion-item no-padding clear>
+            <ion-row >
+              <ion-col></ion-col>
+              <ion-col >
+                <p><small>Price is Exclusive of VAT(12%) and Charity Amount</small></p>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </div> -->
+  </div>
+</ion-content>

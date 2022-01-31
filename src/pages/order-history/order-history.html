@@ -1,0 +1,53 @@
+<ion-header style="background-color: #2cbfb1;">
+    <ion-navbar>
+      <button ion-button menuToggle icon-only>
+        <ion-icon name="menu" style="color:#fff; "></ion-icon>
+      </button>
+      <ion-title style="color:#fff; ">MY ORDERS</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+  <ion-content class="bg-light">
+
+    <div *ngIf="showtxt">
+        <ion-grid>
+          <ion-row class="emptycart">
+            <ion-col>
+              <p>You have no orders in your orders list!</p></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <ion-list *ngIf="showHisdata">
+        <ion-card no-padding *ngFor="let item of allOrderData;  let i = index;">
+          <ion-row class="orderholder">
+            <ion-col>
+              <h2 class="orderid">ORDER ID: {{item.orderid}}</h2>
+              <h3 class="ordertime">Placed on <span>{{item.ordertime}}</span></h3>
+              <!-- <p *ngIf="item.status == 'Received'"><img src="././assets/imgs/received.png">Received</p> -->
+              <p *ngIf="item.status == 'Confirmed'"><img src="././assets/imgs/confirmed.png">Order Confirmed</p>
+              <p *ngIf="item.status == 'Picked Up'"><img src="././assets/imgs/pick_active.png">Order Picked Up</p>
+              <p *ngIf="item.status == 'Processing'"><img src="././assets/imgs/inporcess.png">Order In Process</p>
+              <p *ngIf="item.status == 'Dispatched'"><img src="././assets/imgs/dispatched.png">Order Dispatched</p>
+              <p *ngIf="item.status == 'Delivered'"><img src="././assets/imgs/delivered.png">Order Delivered</p>
+              <!-- <p *ngIf="item.status == 'Cancelled'"><img src="././assets/imgs/cancel.png">Cancelled</p> -->
+            </ion-col>
+          </ion-row>
+          <ion-row >
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col>
+              <button ion-button icon-left clear (click)="openOrderDetailPage(item.orderid,item.fname,item.lname,item.area,item.address,item.mobile,item.ordertime,item.delivery_option,item.delivery_date,item.pickup_date,item.pickup_time_from,item.pickup_time_to,item.delivery_time_from,item.delivery_time_to,item.delivery_fee)">
+                <div>Details</div>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-list>
+      <ion-infinite-scroll (ionInfinite)="doInfinite2($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+</ion-content>

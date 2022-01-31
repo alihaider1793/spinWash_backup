@@ -1,0 +1,11 @@
+0000000000000000000000000000000000000000 15b5a6148b629c4bffc9c50e0d69cc76bb87d3b4 alihaider1793 <alihaider1793@gmail.com> 1606735631 +0500	commit (initial): initial phase done
+15b5a6148b629c4bffc9c50e0d69cc76bb87d3b4 e5c839f7270c4f450d2475adace3c581ca28205b alihaider1793 <alihaider1793@gmail.com> 1609221892 +0500	commit: working on subscriptions
+e5c839f7270c4f450d2475adace3c581ca28205b 5f443a007c107c2de5fe1178dfce4dd3c0826536 alihaider1793 <alihaider1793@gmail.com> 1609225839 +0500	commit: Working on subscriptiond details page
+5f443a007c107c2de5fe1178dfce4dd3c0826536 8d88828f20701c71cce4056a73cc444d218ccc1c alihaider1793 <alihaider1793@gmail.com> 1609248743 +0500	pull --tags origin master: Fast-forward
+8d88828f20701c71cce4056a73cc444d218ccc1c c53ae94a4251beeba676837f5c12fe64de39ff00 alihaider1793 <alihaider1793@gmail.com> 1609363796 +0500	commit: so many changes
+c53ae94a4251beeba676837f5c12fe64de39ff00 04ae46e2ad59971fcddd1670f00287c015fe042b alihaider1793 <alihaider1793@gmail.com> 1609675706 +0500	commit: send subscriptionID to server with userID
+04ae46e2ad59971fcddd1670f00287c015fe042b bbf959d22a5bf7ffc74affd0b80314e8608dbf16 alihaider1793 <alihaider1793@gmail.com> 1609928671 +0500	commit: paypal subscription HTML not opening from assets
+bbf959d22a5bf7ffc74affd0b80314e8608dbf16 39e8cc6d889b66fe3a8846cda45372580d1b6839 alihaider1793 <alihaider1793@gmail.com> 1610131627 +0500	commit: paypal working
+39e8cc6d889b66fe3a8846cda45372580d1b6839 2b7b8fcca0090d6c23fe752613a790f1467b3a29 alihaider1793 <alihaider1793@gmail.com> 1611074368 +0500	commit: expedite_delivery added
+2b7b8fcca0090d6c23fe752613a790f1467b3a29 a78d94596258c561f36fb1fac2d2d5879a5bae0b alihaider1793 <alihaider1793@gmail.com> 1611995762 +0500	commit: paypal keys changed and retail products added
+a78d94596258c561f36fb1fac2d2d5879a5bae0b 7dc6ddd623869dbdda45ee471e75fcb739ebd274 alihaider1793 <alihaider1793@gmail.com> 1612879074 +0500	commit: retail products added on home and other changes

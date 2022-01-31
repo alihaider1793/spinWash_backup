@@ -1,0 +1,160 @@
+<ion-content>
+  <!DOCTYPE html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <script type="text/javascript"
+      src="https://www.paypal.com/sdk/js?client-id=AbqAb57k-dK7En-rC0DP6EZUZ6VucPCmAuDKatpxY45y1_72q9_CsUPd1JE24xwxyuukwtsBU7wOQ-DA&vault=true"></script> -->
+
+    <script type="text/javascript"
+      src="https://www.paypal.com/sdk/js?client-id=ATtEouKE7b_Fm4p-7vfaeuWU3U2xKFePmyT5vndsBtO_wQiG4W9BJ6qYRcjzgpugK1J1XvSy0XlB_SI6&vault=true&intent=subscription"
+      data-sdk-integration-source="button-factory"></script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js">
+    </script>
+  </head>
+
+  <body>
+
+
+    <div id="paypal-button-container"></div>
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=ATtEouKE7b_Fm4p-7vfaeuWU3U2xKFePmyT5vndsBtO_wQiG4W9BJ6qYRcjzgpugK1J1XvSy0XlB_SI6&vault=true&intent=subscription"
+      data-sdk-integration-source="button-factory"></script>
+    <script>
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            'plan_id': 'P-9J463167UR290432DMARHYUQ'
+          });
+        },
+        onApprove: function (data, actions) {
+          console.log('success');
+          // alert(data.subscriptionID);
+          localStorage.setItem('subscriptionID', data.subscriptionID);
+          alert('Successfully Subscribed! Return to home screen to see your Bags!');
+          // SubscriptionDetailsPage.browser.close();
+        },
+        onCancel: function (data) {
+          console.log('subscription cancelled');
+          //Show a cancel page, or return to cart
+          alert('Failed to subscribe! Try again - Clothes Spin Bahamas!');
+          localStorage.setItem('subscriptionID', '-1');
+        }
+      }).render('#paypal-button-container');
+    </script>
+
+
+
+    <!-- <div id="paypal-button-container"></div>
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=ATtEouKE7b_Fm4p-7vfaeuWU3U2xKFePmyT5vndsBtO_wQiG4W9BJ6qYRcjzgpugK1J1XvSy0XlB_SI6&vault=true&intent=subscription"
+      data-sdk-integration-source="button-factory"></script>
+    <script>
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            'plan_id': 'P-2U1949029X752091HMARHXTY'
+          });
+        },
+        onApprove: function (data, actions) {
+          console.log('success');
+          // alert(data.subscriptionID);
+          localStorage.setItem('subscriptionID', data.subscriptionID);
+          alert('Successfully Subscribed! Return to home screen to see your Bags!');
+          // SubscriptionDetailsPage.browser.close();
+        },
+        onCancel: function (data) {
+          console.log('subscription cancelled');
+          //Show a cancel page, or return to cart
+          alert('Failed to subscribe! Try again - Clothes Spin Bahamas!');
+          localStorage.setItem('subscriptionID', '-1');
+        }
+      }).render('#paypal-button-container');
+    </script> -->
+
+
+
+    <!-- <div id="paypal-button-container"></div>
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=ATtEouKE7b_Fm4p-7vfaeuWU3U2xKFePmyT5vndsBtO_wQiG4W9BJ6qYRcjzgpugK1J1XvSy0XlB_SI6&vault=true&intent=subscription"
+      data-sdk-integration-source="button-factory"></script>
+    <script>
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            'plan_id': 'P-76Y4335665733161DMAKA2AQ'
+          });
+        },
+        onApprove: function (data, actions) {
+          console.log('success');
+          // alert(data.subscriptionID);
+          localStorage.setItem('subscriptionID', data.subscriptionID);
+          alert('Successfully Subscribed! Return to home screen to see your Bags!');
+          // SubscriptionDetailsPage.browser.close();
+        },
+        onCancel: function (data) {
+          console.log('subscription cancelled');
+          //Show a cancel page, or return to cart
+          alert('Failed to subscribe! Try again - Clothes Spin Bahamas!');
+          localStorage.setItem('subscriptionID', '-1');
+        }
+      }).render('#paypal-button-container');
+    </script> -->
+
+
+    <!-- <div id="paypal-button-container"></div>
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=AbqAb57k-dK7En-rC0DP6EZUZ6VucPCmAuDKatpxY45y1_72q9_CsUPd1JE24xwxyuukwtsBU7wOQ-DA&vault=true&intent=subscription"
+      data-sdk-integration-source="button-factory"></script>
+    <script>
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            'plan_id': 'P-7HT804554D115302UL74FGVA'
+          });
+        },
+        onApprove: function (data, actions) {
+          console.log('success');
+          // alert(data.subscriptionID);
+          localStorage.setItem('subscriptionID', data.subscriptionID);
+          alert('Successfully Subscribed! Return to home screen to see your Bags!');
+          // SubscriptionDetailsPage.browser.close();
+        },
+        onCancel: function (data) {
+          console.log('subscription cancelled');
+          //Show a cancel page, or return to cart
+          alert('Failed to subscribe! Try again - Clothes Spin Bahamas!');
+          localStorage.setItem('subscriptionID', '-1');
+        }
+      }).render('#paypal-button-container');
+    </script> -->
+
+
+  </body>
+</ion-content>

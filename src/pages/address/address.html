@@ -1,0 +1,144 @@
+<ion-header style="background-color: #2cbfb1;">
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu" style="color:#fff; "></ion-icon>
+    </button>
+    <ion-title style="color:#fff; ">Delivery Address</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="formdiv">
+  <ion-item>
+    <ion-label stacked color="primary">Name</ion-label>
+    <ion-input type="text" required [(ngModel)]="userData.fname"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked color="primary">Address</ion-label>
+    <ion-textarea rows="5" required [(ngModel)]="userData.address"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked color="primary">Mobile Number</ion-label>
+    <ion-input type="number" required [(ngModel)]="userData.mobile"></ion-input>
+  </ion-item>
+
+  <div style=" margin-top:2rem; padding-left: 16px">
+    <ion-item-group>
+      <ion-label stacked color="primary">Payment Method</ion-label>
+      <ion-list radio-group [(ngModel)]="userData.payment">
+
+        <div id="container">
+          <div id="leftThing">
+            <ion-icon class="ion-md-icon" name="cash"></ion-icon>
+          </div>
+          <div id="rightThing">
+            <ion-item no-lines>
+              <ion-label>Cash</ion-label>
+              <ion-radio value="cash_on_delivery"></ion-radio>
+            </ion-item>
+          </div>
+        </div>
+
+        <div id="container" *ngIf="!canPayViaSubscription() && !hasRetailProducts">
+          <div id="leftThing">
+            <ion-icon class="ion-md-icon" name="card"></ion-icon>
+          </div>
+          <div id="rightThing">
+            <ion-item no-lines>
+              <ion-label>Pay via Subscription</ion-label>
+              <ion-radio value="pay_via_subscription"></ion-radio>
+            </ion-item>
+          </div>
+        </div>
+
+        <!-- <div id="container">
+           <div id="leftThing">
+             <ion-icon class="ion-md-icon" name="card"></ion-icon>
+           </div>
+           <div id="rightThing">
+             <ion-item no-lines>
+               <ion-label>Pay via PayPal</ion-label>
+               <ion-radio value="pay_via_paypal"></ion-radio>
+             </ion-item>
+           </div>
+         </div> -->
+
+        <!-- <div id="container">
+            <div id="leftThing">
+              <ion-icon class="ion-md-icon" ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+            </div>
+            <div id="rightThing">
+              <ion-item no-lines>
+                <ion-label>Pay via Wallet</ion-label>
+                <ion-radio value="pay_via_wallet"></ion-radio>
+              </ion-item>
+            </div>
+          </div> -->
+
+      </ion-list>
+    </ion-item-group>
+
+  </div>
+
+  <!--    <div style=" margin-top:2rem; padding-left: 16px">-->
+
+  <!--        <ion-item-group>-->
+  <!--          <ion-label stacked color="primary">Delivery Options</ion-label>-->
+  <!--          <ion-list radio-group [(ngModel)]="userData.delivery_option">-->
+
+  <!--            <div id="container">-->
+  <!--              <div id="leftThing">-->
+  <!--                <ion-icon class="ion-md-icon" name="home"></ion-icon>-->
+  <!--              </div>-->
+  <!--              <div id="rightThing">-->
+  <!--                <ion-item no-lines>-->
+  <!--                  <ion-label>Home Delivery</ion-label>-->
+  <!--                  <ion-radio value="home_delivery"></ion-radio>-->
+  <!--                </ion-item>-->
+  <!--              </div>-->
+  <!--            </div>-->
+
+  <!--            <div id="container">-->
+  <!--              <div id="leftThing">-->
+  <!--                <ion-icon class="ion-md-icon" name="cart"></ion-icon>-->
+  <!--              </div>-->
+  <!--              <div id="rightThing">-->
+  <!--                <ion-item no-lines>-->
+  <!--                  <ion-label>Pick From Store</ion-label>-->
+  <!--                  <ion-radio value="pick_from_store"></ion-radio>-->
+  <!--                </ion-item>-->
+  <!--              </div>-->
+  <!--            </div>-->
+
+  <!--          </ion-list>-->
+  <!--        </ion-item-group>-->
+
+  <!--      </div>-->
+
+  <!-- <div class="subbtn">
+        <button ion-button round (click)="onSubmit()">
+            Submit
+        </button>
+    </div> -->
+
+</ion-content>
+
+
+<ion-footer no-border>
+  <div class="fixed-bottom">
+
+    <div class="price-section">
+      <h3 class="d-flex">Sub Total <span class="end">BSD$ {{amount}}</span></h3>
+      <h3 class="d-flex">Delivery Amount <span class="end">BSD$ {{shipping}}</span></h3>
+			<h3 *ngIf="expedite_activated" class="d-flex">Expedite Delivery Amount <span class="end">BSD$ {{expedite_amount}}</span></h3>
+      <h3 class="d-flex">Payable Amount <span class="end">BSD$ {{finalBill}}</span></h3>
+      <!-- <ion-label class="total-amount">{{"amt_pybl" | translate}}<span [innerHTML]="total_html"></span></ion-label> -->
+    </div>
+
+    <p (click)="onSubmit()" text-center class="btn">
+      Submit
+      <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+    </p>
+  </div>
+</ion-footer>

@@ -1,0 +1,20 @@
+page-my-wallet {
+  .emptywallet{
+    width:60%;
+    font-size: 2rem;
+    font-family: roboto;
+    text-align: center;
+    margin:8rem auto;
+  }
+
+  .emptywallet p{
+    font-family: LeckerliOne;
+    font-size: 2.5rem;
+    color: #3e8d2e;
+  }
+
+  .card {
+    background-color: #fff; // black
+    box-shadow: #000;
+  }
+}

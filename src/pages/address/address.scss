@@ -1,0 +1,134 @@
+page-address {
+
+    font-family: roboto;
+
+    .formdiv{
+        margin-top:2rem;
+    }
+
+    .subbtn{
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .button{
+        width:50%;
+    }
+
+    .fixed-bottom {
+      //border-top: 3px solid #ccc;
+      position: unset;
+      width: 100%;
+  
+      .promo-code {
+        padding: 15px 17px;
+        background-color: $white;
+        color: $text-theme;
+        margin: 0;
+        font-weight: 500;
+        // margin-bottom: 5px;
+        font-size: 1.55rem;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+  
+        span {
+          margin-left: auto;
+          text-align: center !important;
+        }
+  
+        ion-icon {
+          margin-right: 16px;
+          font-size: 2rem;
+        }
+      }
+  
+      .price-section {
+        background-color: $white;
+        padding: 10px 16px 1px;
+  
+        h3 {
+          color: lighten($text-dark, 35%);
+          margin: 0;
+          font-size: 1.5rem;
+          margin-bottom: 6px;
+  
+          span {
+            color: #000 !important;
+            font-weight: 600;
+            font-size: 1.6rem;
+          }
+        }
+  
+        .label {
+          margin-right: 0px;
+          display: flex;
+          color: $text-muted;
+          font-weight: 500;
+          margin-top: 10px;
+          margin-bottom: 8px;
+          font-size: 1.5rem;
+  
+          span {
+            margin-left: auto;
+            color: $text-dark;
+            font-weight: 600;
+          }
+  
+          &.total-amount {
+            color: $text-theme;
+            font-weight: 600;
+            margin-bottom: 15px;
+  
+            span {
+              color: $text-theme;
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+  
+      .btn {
+        height: 50px;
+        line-height: 50px;
+        margin: 0;
+        background-color: $bg-theme;
+        color: $white;
+        font-weight: 400;
+        font-size: 1.8rem;
+  
+        ion-icon {
+          margin-left: 15px;
+          position: relative;
+          top: 2px;
+          font-size: 1.75rem;
+        }
+      }
+    }
+
+    #container {
+      width: 100%;
+      display: flex;
+    }
+
+    #leftThing {
+      align-self: center;
+      width: 5%;
+      margin-top:1px;
+      // margin-top: 15px;
+      // margin-left: 5px;
+    }
+
+    #rightThing {
+      align-self: center;
+      width: 95%;
+    }
+
+    .ion-md-icon{
+      color: #2ea6a6 !important;
+    }
+    .ion-ios-time{
+      color: #2ea6a6 !important;
+    }
+}

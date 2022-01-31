@@ -1,0 +1,49 @@
+<ion-header style="background-color: #2cbfb1;">
+  <ion-navbar no-border-bottom>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Offers</ion-title>
+
+      <ion-buttons end class="cartbadge">
+          <button ion-button (click)="gotocart()">
+              <ion-icon name="ios-cart"></ion-icon>
+            </button><ion-badge item-end>{{cartCounterManager()}}</ion-badge>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+  <ion-content no-padding style="background-image: url(././assets/imgs/bg.png);background-color:white;" class="welcome-background" >
+
+    <div class="offersproduct">
+      <ion-card class="myCard" *ngFor="let item of itemdatafull;  let i = index;">
+        <h3 class="text-offer">New</h3>
+
+        <div *ngIf="item.out_of_stock != 1">
+          <img (click)="openProductDetailPage(item.id,item.name,item.image,item.description,item.quantity,item.quantitytype,item.price)" class="p-2" src="{{baseUrlImage}}{{item.image}}">
+          <ion-card-header>
+            <h2 class="text-center">{{item.name}}</h2>
+          </ion-card-header>
+        </div>
+        <div *ngIf="item.out_of_stock != 0">
+          <img class="p-2" src="{{baseUrlImage}}{{item.image}}">
+          <div class="myOverlay">
+            <div class="card-subtitle"><strong>OUT OF STOCK</strong></div>
+          </div>
+          <ion-card-header>
+            <h2 style="color: grey" class="text-center">{{item.name}}</h2>
+          </ion-card-header>
+        </div>
+        <!-- <ion-card-content>
+            <div class="quantity">{{item.quantity}} {{item.quantitytype}}</div> <div class="price">{{item.price | currency}}</div>
+            <div class="btn-cart"><button ion-button round (click)="addToCartProd(item.id,item.name,item.quantity,item.quantitytype,item.price, item.image)"><ion-icon name="md-add-circle"></ion-icon>&nbsp;Add to Cart</button>
+            </div>
+        </ion-card-content> -->
+      </ion-card>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite1($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+    </ion-content>
+

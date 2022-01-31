@@ -1,0 +1,70 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>My Cart</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+	<div *ngIf="finalcartdata && finalcartdata.length" class="all-orders">
+		<p class="order-header">Your Clothes</p>
+		<ion-label *ngFor="let cartItem of finalcartdata let itemno = index">
+			<div class="item_details">
+				<ion-row>
+					<ion-col col-5>
+						<h2>{{cartItem.itemname}} <span>({{cartItem.selectedCategory}})</span> </h2>
+						<h5 class="service">{{cartItem.itemquantitytype}}</h5>
+					</ion-col>
+					<ion-col col-3>
+						<h3>
+							<ion-icon name="md-remove-circle" (click)="changeQty(itemno,-1)"></ion-icon>
+							<span class="quantity"> {{cartItem.Mquantity}}</span>
+							<ion-icon name="md-add-circle" (click)="changeQty(itemno,1)"></ion-icon>
+						</h3>
+					</ion-col>
+
+					<ion-col col-4>
+						<h4>
+							x BSD$ &nbsp;<span class="amount" [innerHTML]="cartItem.itemprice"></span>
+						</h4>
+					</ion-col>
+				</ion-row>
+			</div>
+
+		</ion-label>
+	</div>
+
+	<div class="empty-view" *ngIf="!finalcartdata || !finalcartdata.length">
+		<ion-icon class="material-icons">shopping_cart</ion-icon>
+		<p>Cart is Empty!</p>
+	</div>
+</ion-content>
+
+<ion-footer no-border *ngIf="finalcartdata || finalcartdata.length">
+	<div class="fixed-bottom">
+		<!-- <p *ngIf="!coupon && (cartItems && cartItems.length)" class="promo-code" (click)="codePage()">
+			<ion-icon name="md-pricetag"></ion-icon>{{"have_promo" | translate}}
+		</p>
+		<p *ngIf="coupon && (cartItems && cartItems.length)" class="promo-code">
+			{{coupon.code}} {{'applied' | translate}}
+			<span text-right [innerHTML]="coupon_amount_html"></span>
+			<ion-icon name="md-close" class="cross-coupon" (click)="removeCoupon()"></ion-icon>
+		</p> -->
+
+		<ion-item *ngIf="finalcartdata && finalcartdata.length">
+			<ion-label>Want Expedite Delivery?</ion-label>
+			<ion-checkbox [(ngModel)]="expedite_activated" (ionChange)="updateCartAmount()"></ion-checkbox>
+		</ion-item>
+
+		<div *ngIf="finalcartdata && finalcartdata.length" class="price-section">
+			<h3 class="d-flex">Sub Total <span class="end">BSD$ {{amount}}</span></h3>
+			<h3 class="d-flex">Delivery Amount <span class="end">BSD$ {{shipping}}</span></h3>
+			<h3 *ngIf="expedite_activated" class="d-flex">Expedite Delivery Amount <span class="end">BSD$ {{expedite_amount}}</span></h3>
+			<h3 class="d-flex">Payable Amount <span class="end">BSD$ {{finalBill}}</span></h3>
+			<!-- <ion-label class="total-amount">{{"amt_pybl" | translate}}<span [innerHTML]="total_html"></span></ion-label> -->
+		</div>
+		<p *ngIf="finalcartdata && finalcartdata.length" (click)="selectaddress()" text-center class="btn">
+			Confirm Order
+			<ion-icon name="ios-arrow-forward-outline"></ion-icon>
+		</p>
+	</div>
+</ion-footer>

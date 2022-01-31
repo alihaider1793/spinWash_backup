@@ -1,0 +1,33 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Payment Details</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+
+    <ion-row>Total Amount to be charged = BSD${{totalBill}}</ion-row>
+
+    <ion-row><ion-label text-wrap>Please provide your card details:</ion-label>
+    </ion-row>
+
+      <form action="/" method="post" id="payment-form">
+
+        <div class="form-row">
+          <div id="card-element">
+            <!-- a Stripe Element will be inserted here. -->
+
+          </div>
+
+          <!-- Used to display Element errors -->
+          <div id="card-errors" role="alert"></div>
+        </div>
+
+      <button ion-button round small>Make Payment</button>
+
+      </form>
+
+  </ion-content>

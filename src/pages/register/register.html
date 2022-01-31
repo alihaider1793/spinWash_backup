@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>REGISTER</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding-top padding-left padding-right>
+
+  <ion-list no-lines class="form">
+
+    <ion-item>
+      <ion-icon name="md-person" item-start></ion-icon>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" text-right placeholder="" [(ngModel)]="userData.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-phone-portrait" item-start></ion-icon>
+      <ion-label floating>Phone#</ion-label>
+      <ion-input type="tel" text-right placeholder="" [(ngModel)]="userData.mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-mail" item-start></ion-icon>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" text-right placeholder="" [(ngModel)]="userData.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-lock" item-start></ion-icon>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" text-right placeholder="" [(ngModel)]="userData.password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-map" item-start></ion-icon>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" text-right [(ngModel)]="userData.address"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <h6>Already have an Account? <span><a href="#" (click)="onlogin()">Login</a></span></h6>
+
+</ion-content>
+
+<ion-footer no-border padding-left padding-right>
+  <button ion-button block (click)="register()">Register</button>
+</ion-footer>
